@@ -1,0 +1,4 @@
+name: RealIP-MC
+main: cc.nohit.realip.RealIP
+version: 1
+loadbefore: ["ProtocolLib"]
