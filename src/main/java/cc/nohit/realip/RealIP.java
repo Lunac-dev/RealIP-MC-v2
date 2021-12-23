@@ -12,22 +12,35 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import cc.nohit.realip.netty.NettyChannelInitializer;
 
 public class RealIP extends JavaPlugin {
+
+	public static RealIP instance;
+
+	public static RealIP getInstance() { return instance; }
+
 	
 	public void onLoad(){
 		try {
-			System.out.println("Injecting NettyHandler...");
+			Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "INFO: Injecting NettyHandler...");
 			inject();
-			System.out.println("Injection successful!");
+			Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "SUCCESS: Injection successful!");
 		} catch (Exception e) {
-			System.out.println("Injection netty handler failed!");
+			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "ERROR: Injection netty handler failed! : " + e);
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public void onEnable() {
+		if (!Bukkit.getPluginManager().isPluginEnabled("ProtocolLib")) {
+			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "WARNING: ProtocolLib needs to be installed!");
+		}
 	}
 	
 	@SuppressWarnings("unchecked")

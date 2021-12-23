@@ -55,8 +55,17 @@ public class NettyChannelInitializer extends ChannelInitializer<SocketChannel> {
 	}
 	
 	static {
+		Class<?> NetworkManagerClz = null;
 		try {
-			Class<?> NetworkManagerClz = Class.forName("net.minecraft.server."+NMS_VERSION+".NetworkManager");
+			NetworkManagerClz = Class.forName("net.minecraft.server."+NMS_VERSION+".NetworkManager");
+		} catch (Exception e) {
+			try {
+				NetworkManagerClz = Class.forName("net.minecraft.network.NetworkManager");
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		try {
 			for (Field field : NetworkManagerClz.getDeclaredFields()) {
 				if (field.getType().getName().contains("java.net.SocketAddress")) {
 					fieldL = field;

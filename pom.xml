@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cc.nohit</groupId>
-    <artifactId>RealIP-MC</artifactId>
+    <artifactId>RealIP-MC-v2</artifactId>
     <version>1</version>
     <packaging>jar</packaging>
 
@@ -16,10 +16,24 @@
 
     <dependencies>
         <dependency>
-			<artifactId>spigot</artifactId>
-			<groupId>spigot</groupId>
-			<version>1</version>
-			<scope>provided</scope>
-		</dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.72.Final</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
 </project>

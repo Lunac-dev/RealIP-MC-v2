@@ -1,4 +1,5 @@
-name: RealIP-MC
+name: RealIP-MC-v2
 main: cc.nohit.realip.RealIP
-version: 1
+version: 1.1
 loadbefore: ["ProtocolLib"]
+description: Forked from RealIP-MC
